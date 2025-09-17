@@ -44,6 +44,7 @@ module Karafka
 
       # Method which runs app
       def run
+        Karafka.logger.info('(vu-hoang-debug) Running')
         self.listeners = []
         self.workers = []
 
@@ -102,6 +103,7 @@ module Karafka
       #   lock them forever. If you need to run Karafka shutdown from within workers threads,
       #   please start a separate thread to do so.
       def stop
+        Karafka.logger.info("(vu-hoang-debug) #{e.class} #{e.message}")
         # Initialize the stopping process only if Karafka was running
         return if Karafka::App.stopping?
         return if Karafka::App.stopped?
